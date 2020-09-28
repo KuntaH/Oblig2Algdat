@@ -43,7 +43,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-
+        hode = null;
+        hale = null;
+        antall = 0;
+        endringer = 0;
     }
 
     public DobbeltLenketListe(T[] a) {
@@ -81,7 +84,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean tom() {
-
         return (hode == null && hale == null && antall == 0);
     }
 
@@ -183,6 +185,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         throw new UnsupportedOperationException();
+    }
+
+    private Node<T> finnNode(int indeks){
+        //Skal først initialisere en current node som.
+        //Jeg tar en test på om indeksen er høyere eller mindre enn halvparten av listen. Dette er for effektivitet av letingen
+        //Dersom indeksen er mindre enn halvparten av listen setter jeg current node til å være hode.
+        //Jeg lager en loop som starter fra hodet eller hale og ender på indeksen vi vil ha. Når den når slutten av løkken vil current node være noden vi leter etter.
+        //returnerer current node.
+        return null;
     }
 
 } // class DobbeltLenketListe
