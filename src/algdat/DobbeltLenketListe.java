@@ -43,8 +43,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-        hode = null;
-        hale = null;
+        hode = hale = null;
         antall = 0;
         endringer = 0;
     }
@@ -141,45 +140,51 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public String toString() {
 
-        if (tom()) return "[]";
+        if (tom()) return "[]";     // Hvis listen er tom retuneres det []
 
         StringBuilder builder = new StringBuilder();
-        builder.append('[');
+        builder.append("[");
 
         Node<T> node = hode;
 
         builder.append(node.verdi);
         node = node.neste;
 
-        while (node != null) {
+        while (node != null) {      // Hvis node ikke er lik null, modifiserer StringBuilder streng-objektene
+
+            builder.append(",").append(" ");
             builder.append(node.verdi);
-            builder.append(", ");
-            node = node.neste;
+
+            node = node.neste;        // Hopper fremover
         }
 
-        builder.append(']');
+        builder.append("]");
         return builder.toString();
     }
 // Utskrift: [] [A] [A, B] [] [A] [B, A]
 
     public String omvendtString() {
 
-        if (tom()) return "[]";
+        if (tom()) return "[]";    // Hvis listen er tom retuneres det []
 
         StringBuilder builder = new StringBuilder();
-        builder.append('[');
+        builder.append("[");
 
-        Node<T> node = hode;
+        Node<T> node = hale;
 
         builder.append(node.verdi);
-        node = node.neste;
+        node = node.forrige;
 
-        while (node != null) {
+        while (node != null) {      // Hvis node ikke er lik null, modifiserer StringBuilder streng-objektene
+
+            builder.append(",").append(" ");
             builder.append(node.verdi);
-            node = node.forrige;
+
+
+            node = node.forrige;    // Hopper bakover
         }
 
-        builder.append(']');
+        builder.append("]");
         return builder.toString();
     }
 
