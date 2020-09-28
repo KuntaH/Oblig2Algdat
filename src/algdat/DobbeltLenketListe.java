@@ -62,7 +62,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         hode = hale = new Node<>(null);
 
         for (T elementer : a){
-            if (elementer != null){  // leter etter første "ikke null" element og lager en node
+            if (elementer != null){  // leter etter forste "ikke null" element og lager en node
 
                 hale = hale.neste = new Node(elementer, hale, null);
                 antall++;
@@ -104,8 +104,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         }
 
-        endringer++;
-        antall++;
+        endringer++;        // Oker endringer
+        antall++;           // Oker antallet
         return true;
 
 
