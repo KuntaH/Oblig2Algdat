@@ -22,5 +22,9 @@ public class Main {
         System.out.println(l1.toString() + " " + l2.toString()
                 + " " + l3.toString() + " " + l1.omvendtString() + " "
                 + l2.omvendtString() + " " + l3.omvendtString());
+
+        DobbeltLenketListe<Integer> test = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
+        System.out.println(test.indeksTil(3));
+        System.out.println(test.inneholder(0));
     }
 }
