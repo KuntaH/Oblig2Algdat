@@ -144,6 +144,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (tom()) return "[]";
 
         StringBuilder builder = new StringBuilder();
+        builder.append('[');
 
         Node<T> node = hode;
 
@@ -152,21 +153,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         while (node != null) {
             builder.append(node.verdi);
+            builder.append(", ");
             node = node.neste;
         }
 
-
+        builder.append(']');
         return builder.toString();
     }
-
-
-
+// Utskrift: [] [A] [A, B] [] [A] [B, A]
 
     public String omvendtString() {
 
         if (tom()) return "[]";
 
         StringBuilder builder = new StringBuilder();
+        builder.append('[');
 
         Node<T> node = hode;
 
@@ -178,7 +179,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             node = node.forrige;
         }
 
-
+        builder.append(']');
         return builder.toString();
     }
 
