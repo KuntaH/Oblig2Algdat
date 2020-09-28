@@ -50,15 +50,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe(T[] a) {
 
-        if (a == null){
-            throw new NullPointerException("Tabellen a er null!");
+        this();
+        Objects.requireNonNull(a, "Tabellen a er null!");
+
+        /*
+       if (a == null){
+           throw new NullPointerException("Tabellen a er null!");
         }
+
+         */
         hode = hale = new Node<>(null);
 
         for (T elementer : a){
             if (elementer != null){  // leter etter første "ikke null" element og lager en node
 
-                hale = hale.neste=new Node(elementer, hale, null);
+                hale = hale.neste = new Node(elementer, hale, null);
                 antall++;
             }
         }
@@ -134,12 +140,48 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+
+        if (tom()) return "[]";
+
+        StringBuilder builder = new StringBuilder();
+
+        Node<T> node = hode;
+
+        builder.append(node.verdi);
+        node = node.neste;
+
+        while (node != null) {
+            builder.append(node.verdi);
+            node = node.neste;
+        }
+
+
+        return builder.toString();
     }
 
+
+
+
     public String omvendtString() {
-        throw new UnsupportedOperationException();
+
+        if (tom()) return "[]";
+
+        StringBuilder builder = new StringBuilder();
+
+        Node<T> node = hode;
+
+        builder.append(node.verdi);
+        node = node.neste;
+
+        while (node != null) {
+            builder.append(node.verdi);
+            node = node.forrige;
+        }
+
+
+        return builder.toString();
     }
+
 
     @Override
     public Iterator<T> iterator() {
