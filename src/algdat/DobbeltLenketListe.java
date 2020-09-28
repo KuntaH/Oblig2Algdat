@@ -43,7 +43,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-
+        hode = hale = null;
+        antall = 0;
+        endringer = 0;
     }
 
     public DobbeltLenketListe(T[] a) {
@@ -60,7 +62,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 antall++;
             }
         }
-        if(antall==0){
+        if (antall==0){
             hode=hale=null;
         }
         else{
