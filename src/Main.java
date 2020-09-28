@@ -25,6 +25,15 @@ public class Main {
                 + " " + l3.toString() + " " + l1.omvendtString() + " "
                 + l2.omvendtString() + " " + l3.omvendtString());
 
+
+        DobbeltLenketListe<Integer> listeLeginn = new DobbeltLenketListe<>();
+        System.out.println(listeLeginn.toString() + " " + listeLeginn.omvendtString());
+        for (int i = 1; i <= 3; i++) {
+            listeLeginn.leggInn(i);
+            System.out.println(listeLeginn.toString() + " " + listeLeginn.omvendtString()); }
+
+
+        // Oppgave 4
         DobbeltLenketListe<Integer> test = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
         System.out.println(test.indeksTil(3));
         System.out.println(test.inneholder(6));
