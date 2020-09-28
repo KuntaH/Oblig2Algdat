@@ -230,12 +230,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     private Node<T> finnNode(int indeks){
-        //Skal først initialisere en current node som.
-        //Jeg tar en test på om indeksen er høyere eller mindre enn halvparten av listen. Dette er for effektivitet av letingen
-        //Dersom indeksen er mindre enn halvparten av listen setter jeg current node til å være hode.
-        //Jeg lager en loop som starter fra hodet eller hale og ender på indeksen vi vil ha. Når den når slutten av løkken vil current node være noden vi leter etter.
-        //returnerer current node.
-        return null;
+        Node<T> current;                    //Skal først initialisere en current node som.
+
+        if(indeks < antall /2){             //Jeg tar en test på om indeksen er høyere enn eller mindre enn halvparten av listen. Dette er for effektivitet av letingen
+            current = hode;
+            for(int i = 0; i < indeks;i++){
+                current = current.neste;
+            }
+        }else {                             //Dersom indeksen er på den andre halvdelen av listen starter vi letingen fra halen og skjekker bakover i listen
+            current = hale;
+            for(int i = antall-1; i > indeks;i--){
+                current = current.forrige;
+            }
+        }                                   //Når if statement er ferdig har vi funnet posisjon av noden på indeks og lagret den noden som current.
+        return current; //returnerer current node.
     }
 
 } // class DobbeltLenketListe
