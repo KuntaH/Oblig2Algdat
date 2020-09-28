@@ -68,7 +68,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 antall++;
             }
         }
-        if(antall==0){
+        if(antall == 0){
             hode=hale=null;
         }
         else{
@@ -99,12 +99,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-        throw new UnsupportedOperationException();
+        if (indeks < 0 || indeks > antall) {
+            throw new IllegalArgumentException("Indeks utenfor listen");
+        }
+        Node<T> newNode = new Node<T>(verdi);
+
     }
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
+        if(indeksTil(verdi) == -1) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -114,7 +121,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        throw new UnsupportedOperationException();
+        if (verdi == null) {
+            return -1;
+        }
+        Node current = this.hode;
+        int index;
+
+        for (int i = 0; i < this.antall; i++) {
+            if(verdi == current.verdi) {
+                return i;
+            }
+            current = current.neste;
+        }
+       return -1;
     }
 
     @Override
