@@ -98,12 +98,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
+    // 1,2,3,4,5
     public void leggInn(int indeks, T verdi) {
         if (indeks < 0 || indeks > antall) {
             throw new IllegalArgumentException("Indeks utenfor listen");
         }
         Node<T> newNode = new Node<T>(verdi);
-
+        Node<T> prev = finnNode(indeks-1);
+        Node<T> next = finnNode(indeks);
+        if(indeks == antall) {  // legge til paa slutten
+            newNode.neste = null;
+            newNode.forrige = prev;
+            prev.neste = newNode;
+            this.hale = newNode;
+        } else if (indeks == 0) { // legge til paa starten
+            newNode.forrige = null;
+            newNode.neste = next;
+            next.forrige = newNode;
+            this.hode = newNode;
+        } else{ // legge til mellom to noder
+            prev.neste = newNode;
+            newNode.neste = next;
+            newNode.forrige = prev;
+            next.forrige = newNode;
+        }
+        this.antall++;
     }
 
     @Override
@@ -255,6 +274,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     private Node<T> finnNode(int indeks){
+
         Node<T> current;                    //Skal først initialisere en current node som.
 
         if(indeks < antall /2){             //Jeg tar en test på om indeksen er høyere enn eller mindre enn halvparten av listen. Dette er for effektivitet av letingen

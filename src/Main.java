@@ -1,6 +1,8 @@
 import algdat.DobbeltLenketListe;
 import algdat.Liste;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -25,6 +27,10 @@ public class Main {
 
         DobbeltLenketListe<Integer> test = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
         System.out.println(test.indeksTil(3));
-        System.out.println(test.inneholder(0));
+        System.out.println(test.inneholder(6));
+
+        test.leggInn(0, 6);
+        System.out.println(test.indeksTil(6));
+        System.out.println(test.inneholder(6));
     }
 }
