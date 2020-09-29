@@ -88,24 +88,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                     ("til(" + til + ") > antall(" + antall + ")");
 
         if (fra > til)                                // fra er større enn til
-            throw new IndexOutOfBoundsException
+            throw new IllegalArgumentException
                     ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
     }
 
-
     public Liste<T> subliste(int fra, int til){
         //throw new UnsupportedOperationException();
-        if(fra > til || til < fra){
-            throw new NullPointerException("Null-verdier er ikke tillatt");
-        }
+        fratilKontroll(antall, fra, til);                               //Skjekke at fra og til ikke er nullpeker.
+        Liste<T> liste = new DobbeltLenketListe<>();                    //Opprette subliste
         int lengde = til-fra;
-        fratilKontroll(lengde, fra, til);
 
-        Liste<T> liste = new DobbeltLenketListe<>();            //Opprette subliste
-                    //Skjekke at fra og til ikke er nullpeker.
-                    //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
-                    //Sette antall ved å ta til minus fra.
-        return null;
+        Node<T> node = finnNode(fra);                                   //Oppretter første node
+
+        while(lengde > 0){                                              //så lenge det er flere noder som skal legges til
+            liste.leggInn(node.verdi);                                  //legger vi til noden i listen
+            node = node.neste;                                          //og endrer noden til å være neste noden som skal legges til.
+            lengde--;
+        }
+
+        return liste;                                                   //Returnerer sublisten
     }
 
     @Override
@@ -342,7 +343,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 current = current.forrige;
             }
         }                                   //Når if statement er ferdig har vi funnet posisjon av noden på indeks og lagret den noden som current.
-        return current; //returnerer current node.
+        return current;                     //returnerer current node.
     }
 
 } // class DobbeltLenketListe
