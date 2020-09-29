@@ -79,7 +79,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
 
     public Liste<T> subliste(int fra, int til){
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+                    //Opprette subliste
+                    //Skjekke at fra og til ikke er nullpeker.
+                    //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
+                    //Sette antall ved å ta til minus fra.jjj
+        return null;
     }
 
     @Override
