@@ -50,9 +50,12 @@ public class Main {
 
 
         //  Oppgave 6
-        Liste<String>  liste5 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
-        liste5.fjern("G");
-        System.out.println(liste5);
+        Liste<String>  liste6 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
+        liste6.fjern("B");
+        System.out.println(liste6);
+
+
+
 
     }
 }

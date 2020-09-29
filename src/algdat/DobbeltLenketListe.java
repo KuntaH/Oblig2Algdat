@@ -95,17 +95,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public Liste<T> subliste(int fra, int til){
         //throw new UnsupportedOperationException();
-        if(fra > til || til < fra){
-            throw new NullPointerException("Null-verdier er ikke tillatt");
-        }
-        int lengde = til-fra;
-        fratilKontroll(lengde, fra, til);
 
         Liste<T> liste = new DobbeltLenketListe<>();            //Opprette subliste
-                    //Skjekke at fra og til ikke er nullpeker.
-                    //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
-                    //Sette antall ved å ta til minus fra.
-        return null;
+        //Skjekke at fra og til ikke er nullpeker.
+        //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
+        //Sette antall ved å ta til minus fra.
+
+        int lengde = til-fra;
+        fratilKontroll(antall, fra, til);
+
+        Node<T> node = finnNode(fra);
+
+        while (lengde > 0) {
+            liste.leggInn(node.verdi);
+            node = node.neste;
+            lengde--;
+        }
+        return liste;
     }
 
     @Override
@@ -262,12 +268,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return true;  // fjerning vellykket
 
-
     }
 
     @Override
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+
+      //  indeksKontroll(indeks, false);
+
+
+
     }
 
     @Override
