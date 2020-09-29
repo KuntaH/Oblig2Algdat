@@ -88,7 +88,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                     ("til(" + til + ") > antall(" + antall + ")");
 
         if (fra > til)                                // fra er større enn til
-            throw new IndexOutOfBoundsException
+            throw new IllegalArgumentException
                     ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
     }
 
@@ -96,13 +96,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public Liste<T> subliste(int fra, int til){
         //throw new UnsupportedOperationException();
 
+        fratilKontroll(antall, fra, til);
+
         Liste<T> liste = new DobbeltLenketListe<>();            //Opprette subliste
         //Skjekke at fra og til ikke er nullpeker.
         //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
         //Sette antall ved å ta til minus fra.
 
-        int lengde = til-fra;
-        fratilKontroll(antall, fra, til);
+        int lengde = til - fra;
+
 
         Node<T> node = finnNode(fra);
 
@@ -275,7 +277,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
       //  indeksKontroll(indeks, false);
 
+        if (antall == 1) {  // hvis det bare er en node i lista
+            hode = hale = null;
+        }
+        else if (indeks == 0){  // hvis den første skal fjernes fra lista
+            hode = hode.forrige;
+            hode.neste = null;
+        }
+        else if (indeks == antall -1){      // hvsi den siste skal fjernes fra lista
+            hale = hale.forrige;
+            hale.neste = null;
+        }
+        else {
 
+        }
+
+        throw new UnsupportedOperationException();
 
     }
 
