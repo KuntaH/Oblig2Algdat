@@ -38,8 +38,11 @@ public class Main {
         System.out.println(test.indeksTil(3));
         System.out.println(test.inneholder(6));
 
-        test.leggInn(0, 6);
+
         System.out.println(test.indeksTil(6));
         System.out.println(test.inneholder(6));
+
+        DobbeltLenketListe<Integer> test2 = new DobbeltLenketListe<>();
+        test2.leggInn(0, 4);
     }
 }
