@@ -465,7 +465,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                     denne.forrige = denne.forrige.forrige;
                 }
             }
-
+            antall--;
+            endringer++;
+            iteratorendringer++;
         }
 
     }
