@@ -306,21 +306,40 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
+    /**
+     * replaces all values and pointers in the list to null,
+     * documents the changes, sets the head and tail to null,
+     * and then reduces the length to 0.
+     *
+     * 7.1 was chosen because of a very, very slightly shorter runtime.
+     *
+     * @author: Simen N. Renberg
+     * @version: 1.0
+     * @since 29/9/2020
+     */
     public void nullstill() {
         //7.1
+
         Node<T> p = hode;
         while(p.neste != hale){
             Node<T> nesteNode = p.neste;
             p.forrige = null;
             p.verdi = null;
             p.neste = null;
+            endringer++;
             p = nesteNode;
-        }
+       }
         hale =  hode = null;
+        endringer++;
         antall = 0;
+        endringer++;
 
+        /*
         //7.2
-
+        while (antall > 0){
+            this.fjern(0);
+        }
+        */
     }
 
     @Override
@@ -431,7 +450,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
-            throw new UnsupportedOperationException();
+
         }
 
     }

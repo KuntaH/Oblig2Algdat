@@ -75,7 +75,7 @@ public class Main {
 
         // Oppgave 7
         System.out.println("------7------");
-        DobbeltLenketListe<Integer> test7 = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
+        DobbeltLenketListe<Integer> test7 = new DobbeltLenketListe<>(new Integer[]{1,2,3,4,5});
         test7.nullstill();
 
         // oppgave 8

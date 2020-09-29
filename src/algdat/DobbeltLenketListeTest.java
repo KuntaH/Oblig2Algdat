@@ -930,7 +930,7 @@ class DobbeltLenketListeTest {
 
         DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<>();
 
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= 100000; i++) {
             liste.leggInn(i);
         }
 
