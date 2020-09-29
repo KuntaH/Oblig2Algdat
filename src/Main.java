@@ -63,7 +63,7 @@ public class Main {
         System.out.println(liste6);
 
 
-        Character[] c = {'A','B','C','D','E','F','G','H','I','J',};
+        Character[] d = {'A','B','C','D','E','F','G','H','I','J',};
         DobbeltLenketListe<Character> liste3 = new DobbeltLenketListe<>(c);
         System.out.println(liste3.subliste(3,8)); // [D, E, F, G, H] //
         System.out.println(liste3.subliste(5,5)); // []
