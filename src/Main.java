@@ -32,6 +32,14 @@ public class Main {
             listeLeginn.leggInn(i);
             System.out.println(listeLeginn.toString() + " " + listeLeginn.omvendtString()); }
 
+        //Oppgave 3
+        Character[] c = { 'A' , 'B' , 'C' , 'D' , 'E' , 'F' , 'G' , 'H' , 'I' , 'J' ,};
+        DobbeltLenketListe<Character> l = new DobbeltLenketListe<>(c);
+        System. out .println(l.subliste(3,8)); // [D, E, F, G, H]
+        System. out .println(l.subliste(5,5)); // []
+        System. out .println(l.subliste(8,l.antall())); // [I, J]
+        // System.out.println(liste.subliste(0,11)); // skal kaste unntak
+
 
         // Oppgave 4
         DobbeltLenketListe<Integer> test = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
