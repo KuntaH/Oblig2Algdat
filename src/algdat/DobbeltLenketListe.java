@@ -332,8 +332,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         hale =  hode = null;
         endringer++;
         antall = 0;
-        endringer++;
-
         /*
         //7.2
         while (antall > 0){
@@ -400,13 +398,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Iterator<T> iterator(int indeks) {
-        try {
-            indeksKontroll(indeks, false);
-            return new DobbeltLenketListeIterator(indeks);
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-            return null;
-        }
+        indeksKontroll(indeks, false);
+        return new DobbeltLenketListeIterator(indeks);
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>

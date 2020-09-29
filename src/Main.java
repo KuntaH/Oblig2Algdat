@@ -72,10 +72,10 @@ public class Main {
 
         // oppgave 8
         String[] navn = {"Lars","Anders","Bodil","Kari","Per","Berit"};
-        Liste<String> liste3 = new DobbeltLenketListe<>(navn);
-        liste3.forEach(se -> System.out.print(se + " "));
+        Liste<String> listee = new DobbeltLenketListe<>(navn);
+        listee.forEach(se -> System.out.print(se + " "));
         System.out.println();
-        for (String se : liste3) System.out.print(se + ", ");
+        for (String se : listee) System.out.print(se + ", ");
 
 
     }
