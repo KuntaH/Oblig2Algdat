@@ -2,6 +2,7 @@ import algdat.DobbeltLenketListe;
 import algdat.Liste;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -38,6 +39,8 @@ public class Main {
         System.out.println(test.indeksTil(3));
         System.out.println(test.inneholder(6));
 
+        for (int i : test) System.out.println(i);
+        // Oppgave 5
         test.leggInn(0, 6);
         System.out.println(test.indeksTil(6));
         System.out.println(test.inneholder(6));
@@ -53,6 +56,14 @@ public class Main {
         Liste<String>  liste5 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
         liste5.fjern("G");
         System.out.println(liste5);
+
+        // oppgave 8
+        String[] navn = {"Lars","Anders","Bodil","Kari","Per","Berit"};
+        Liste<String> liste3 = new DobbeltLenketListe<>(navn);
+        liste3.forEach(se -> System.out.print(se + " "));
+        System.out.println();
+        for (String se : liste3) System.out.print(se + ", ");
+
 
     }
 }

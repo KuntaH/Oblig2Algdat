@@ -199,7 +199,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         int index;
 
         for (int i = 0; i < this.antall; i++) {
-            if(verdi == current.verdi) {
+            if(verdi.equals(current.verdi)) {
                 return i;
             }
             current = current.neste;
@@ -328,11 +328,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException();
+        return new DobbeltLenketListeIterator();
     }
 
     public Iterator<T> iterator(int indeks) {
-        throw new UnsupportedOperationException();
+        try {
+            indeksKontroll(indeks, false);
+            return new DobbeltLenketListeIterator(indeks);
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>
@@ -347,8 +353,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             iteratorendringer = endringer;  // teller endringer
         }
 
-        private DobbeltLenketListeIterator(int indeks){
-            throw new UnsupportedOperationException();
+        private DobbeltLenketListeIterator(int indeks) {
+            denne = finnNode(indeks);  // p starter paa indeks
+            fjernOK = false;  // blir sann når next() kalles
+            iteratorendringer = endringer;  // teller endringer
         }
 
         @Override
@@ -359,7 +367,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public T next(){
             // sjekke om iteratorendringer er lik endringer
-            return null;
+            if (iteratorendringer != endringer) {
+                throw new ConcurrentModificationException("Endringer og iteratorendringer ikke like");
+            }
+            // sjekke om det er flere elementer igjen i listen
+            if (!hasNext()) {
+                throw new NoSuchElementException("Ikke flere elementer i listen");
+            }
+            fjernOK = true;
+            T returVerdi = denne.verdi;
+            denne = denne.neste;
+            return returVerdi;
         }
 
         @Override
@@ -367,7 +385,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new UnsupportedOperationException();
         }
 
-    } // class DobbeltLenketListeIterator
+    }
+
+    // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         throw new UnsupportedOperationException();
