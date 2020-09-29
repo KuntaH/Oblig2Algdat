@@ -70,5 +70,10 @@ public class Main {
         System.out.println(liste3.subliste(8,liste3.antall())); // [I, J]
 
 
+        // Oppgave 7
+        System.out.println("------7------");
+        DobbeltLenketListe<Integer> test7 = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
+        test7.nullstill();
+
     }
 }
