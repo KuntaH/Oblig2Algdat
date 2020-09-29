@@ -77,13 +77,34 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     }
 
+    private static void fratilKontroll(int antall, int fra, int til)
+    {
+        if (fra < 0)                                  // fra er negativ
+            throw new IndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > antall)                          // til er utenfor tabellen
+            throw new IndexOutOfBoundsException
+                    ("til(" + til + ") > antall(" + antall + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IndexOutOfBoundsException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+    }
+
 
     public Liste<T> subliste(int fra, int til){
         //throw new UnsupportedOperationException();
-                    //Opprette subliste
+        if(fra > til || til < fra){
+            throw new NullPointerException("Null-verdier er ikke tillatt");
+        }
+        int lengde = til-fra;
+        fratilKontroll(lengde, fra, til);
+
+        Liste<T> liste = new DobbeltLenketListe<>();            //Opprette subliste
                     //Skjekke at fra og til ikke er nullpeker.
                     //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
-                    //Sette antall ved å ta til minus fra.jjj
+                    //Sette antall ved å ta til minus fra.
         return null;
     }
 
