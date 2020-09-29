@@ -48,7 +48,7 @@ public class Main {
 
         //  Oppgave 6
         Liste<String>  liste5 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
-        liste5.fjern("B");
+        liste5.fjern("G");
         System.out.println(liste5);
 
     }

@@ -222,8 +222,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         Node<T> p = hode;
 
-        if (p != null) {   // hvis p ikke er lik null, leter etter verdien
-            if (p.verdi.equals(verdi)) {
+        while (p != null) {   // hvis p ikke er lik null, leter etter verdien
+            if (p.verdi.equals(verdi)) break; {
                 p = p.neste;
             }
         }
