@@ -181,8 +181,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        // Begynner på oppgave 6
-        return true;
+
+        if (verdi == null) {
+            return false;
+        }
+
+        Node<T> p = hode;
+
+        if (p != null) {   // hvis p ikke er lik null, leter etter verdien
+            if (p.verdi.equals(verdi)) {
+                p = p.neste;
+            }
+        }
+
+        if (p == null){
+            return false;   // verdien er ikke i lista
+        }
+
+
+
+
     }
 
     @Override
