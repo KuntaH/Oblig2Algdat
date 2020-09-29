@@ -176,7 +176,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
+        // Begynner på oppgave 6
+        return true;
     }
 
     @Override
