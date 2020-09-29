@@ -49,5 +49,26 @@ public class Main {
         test.leggInn(0, 6);
         System.out.println(test.indeksTil(6));
         System.out.println(test.inneholder(6));
+
+        DobbeltLenketListe<Integer> test2 = new DobbeltLenketListe<>();
+        test2.leggInn(0, 4);
+
+        System.out.println("-----------------");
+
+
+
+        //  Oppgave 6
+        Liste<String>  liste6 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
+        liste6.fjern("B");
+        System.out.println(liste6);
+
+
+        Character[] c = {'A','B','C','D','E','F','G','H','I','J',};
+        DobbeltLenketListe<Character> liste3 = new DobbeltLenketListe<>(c);
+        System.out.println(liste3.subliste(3,8)); // [D, E, F, G, H] //
+        System.out.println(liste3.subliste(5,5)); // []
+        System.out.println(liste3.subliste(8,liste3.antall())); // [I, J]
+
+
     }
 }
