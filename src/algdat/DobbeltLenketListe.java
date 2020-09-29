@@ -88,24 +88,32 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                     ("til(" + til + ") > antall(" + antall + ")");
 
         if (fra > til)                                // fra er større enn til
-            throw new IndexOutOfBoundsException
+            throw new IllegalArgumentException
                     ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
     }
 
 
     public Liste<T> subliste(int fra, int til){
         //throw new UnsupportedOperationException();
-        if(fra > til || til < fra){
-            throw new NullPointerException("Null-verdier er ikke tillatt");
-        }
-        int lengde = til-fra;
-        fratilKontroll(lengde, fra, til);
+
+        fratilKontroll(antall, fra, til);
 
         Liste<T> liste = new DobbeltLenketListe<>();            //Opprette subliste
-                    //Skjekke at fra og til ikke er nullpeker.
-                    //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
-                    //Sette antall ved å ta til minus fra.
-        return null;
+        //Skjekke at fra og til ikke er nullpeker.
+        //Skjekke at fra ikke er større enn til og at til ikke er mindre enn fra
+        //Sette antall ved å ta til minus fra.
+
+        int lengde = til - fra;
+
+
+        Node<T> node = finnNode(fra);
+
+        while (lengde > 0) {
+            liste.leggInn(node.verdi);
+            node = node.neste;
+            lengde--;
+        }
+        return liste;
     }
 
     @Override
@@ -261,17 +269,58 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return true;  // fjerning vellykket
 
-
     }
 
     @Override
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+
+        indeksKontroll(indeks, false);
+
+        Node<T> node = hode;
+
+        if (antall == 1) {  // hvis det bare er en node i lista
+            hode = hale = null;
+        }
+        else if (indeks == 0){  // hvis den første skal fjernes fra lista
+            hode = hode.neste;
+            hode.forrige = null;
+        }
+        else if (indeks == antall -1){      // hvis den siste skal fjernes fra lista
+            node = hale;
+            hale = hale.forrige;
+            hale.neste = null;
+        }
+        else {
+            node = finnNode(indeks); // bruker hjelpemetoden finnNode() for å finne verdi mellom to noder
+            node.forrige.neste = node.neste;
+            node.neste.forrige = node.forrige;
+        }
+
+        T verdi = node.verdi;  // verdi skal returneres
+
+        antall--;       // en verdi mindre i lista
+        endringer++;    // en ny endring i lista
+
+
+        return verdi;
     }
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        //7.1
+        Node<T> p = hode;
+        while(p.neste != hale){
+            Node<T> nesteNode = p.neste;
+            p.forrige = null;
+            p.verdi = null;
+            p.neste = null;
+            p = nesteNode;
+        }
+        hale =  hode = null;
+        antall = 0;
+
+        //7.2
+
     }
 
     @Override

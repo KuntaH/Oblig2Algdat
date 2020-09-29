@@ -33,6 +33,14 @@ public class Main {
             listeLeginn.leggInn(i);
             System.out.println(listeLeginn.toString() + " " + listeLeginn.omvendtString()); }
 
+        //Oppgave 3
+        Character[] c = { 'A' , 'B' , 'C' , 'D' , 'E' , 'F' , 'G' , 'H' , 'I' , 'J' ,};
+        DobbeltLenketListe<Character> l = new DobbeltLenketListe<>(c);
+        System. out .println(l.subliste(3,8)); // [D, E, F, G, H]
+        System. out .println(l.subliste(5,5)); // []
+        System. out .println(l.subliste(8,l.antall())); // [I, J]
+        // System.out.println(liste.subliste(0,11)); // skal kaste unntak
+
 
         // Oppgave 4
         DobbeltLenketListe<Integer> test = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
@@ -53,9 +61,22 @@ public class Main {
 
 
         //  Oppgave 6
-        Liste<String>  liste5 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
-        liste5.fjern("G");
-        System.out.println(liste5);
+        Liste<String>  liste6 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
+        liste6.fjern("B");
+        System.out.println(liste6);
+
+
+        Character[] d = {'A','B','C','D','E','F','G','H','I','J',};
+        DobbeltLenketListe<Character> liste3 = new DobbeltLenketListe<>(c);
+        System.out.println(liste3.subliste(3,8)); // [D, E, F, G, H] //
+        System.out.println(liste3.subliste(5,5)); // []
+        System.out.println(liste3.subliste(8,liste3.antall())); // [I, J]
+
+
+        // Oppgave 7
+        System.out.println("------7------");
+        DobbeltLenketListe<Integer> test7 = new DobbeltLenketListe<>(new Integer[]{1, 2, 3, 4, 5});
+        test7.nullstill();
 
         // oppgave 8
         String[] navn = {"Lars","Anders","Bodil","Kari","Per","Berit"};
