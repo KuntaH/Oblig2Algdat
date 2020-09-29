@@ -41,5 +41,15 @@ public class Main {
         test.leggInn(0, 6);
         System.out.println(test.indeksTil(6));
         System.out.println(test.inneholder(6));
+
+        System.out.println("-----------------");
+
+
+
+        //  Oppgave 6
+        Liste<String>  liste5 = new DobbeltLenketListe<>(new String[]{"A", "B", "C", "D", "E", "F", "G"});
+        liste5.fjern("B");
+        System.out.println(liste5);
+
     }
 }

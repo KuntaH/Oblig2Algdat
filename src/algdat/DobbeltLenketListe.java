@@ -232,7 +232,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return false;   // verdien er ikke i lista
         }
 
+        else if (antall == 1){  // finnes bare 1 node i lista
+            hode = hale = null;
+        }
+        else if (p == hode){        // hvis den første skal fjernes
+            hode = hode.neste;
+            hode.forrige = null;
+        }
+        else if (p == hale){        // hvis den siste skal fjernes
+            hale = hale.forrige;
+            hale.neste = null;
+        }
+        else {
+            p.forrige.neste = p.neste;      // fjernes en verdi mellom to noder
+            p.neste.forrige = p.forrige;
+        }
+        antall--;  // en verdi mindre i lista
+        endringer++;    // en ny endring i lista
 
+        return true;  // fjerning vellykket
 
 
     }
