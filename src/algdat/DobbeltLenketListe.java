@@ -277,6 +277,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
       //  indeksKontroll(indeks, false);
 
+        Node<T> node = hode;
+
         if (antall == 1) {  // hvis det bare er en node i lista
             hode = hale = null;
         }
@@ -284,15 +286,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hode = hode.forrige;
             hode.neste = null;
         }
-        else if (indeks == antall -1){      // hvsi den siste skal fjernes fra lista
+        else if (indeks == antall -1){      // hvis den siste skal fjernes fra lista
+            node = hale;
             hale = hale.forrige;
             hale.neste = null;
         }
         else {
-
+            node = finnNode(indeks); // bruker hjelpemetoden finnNode() for å finne verdi mellom to noder
+            node.forrige.neste = node.neste;
+            node.neste.forrige = node.neste;
         }
 
-        throw new UnsupportedOperationException();
+        antall--;       // en verdi mindre i lista
+        endringer++;    // en ny endring i lista
+
+
 
     }
 
