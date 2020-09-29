@@ -134,7 +134,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         antall++;           // Oker antallet
         return true;
 
-
     }
 
     @Override
@@ -342,7 +341,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         private boolean fjernOK;
         private int iteratorendringer;
 
-        private DobbeltLenketListeIterator(){
+        private DobbeltLenketListeIterator() {
             denne = hode;     // p starter på den første i listen
             fjernOK = false;  // blir sann når next() kalles
             iteratorendringer = endringer;  // teller endringer
@@ -359,7 +358,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next(){
-            throw new UnsupportedOperationException();
+            // sjekke om iteratorendringer er lik endringer
+            return null;
         }
 
         @Override
