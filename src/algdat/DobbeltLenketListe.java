@@ -273,11 +273,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T fjern(int indeks) {
-
         indeksKontroll(indeks, false);
-
         Node<T> node = hode;
-
         if (antall == 1) {  // hvis det bare er en node i lista
             hode = hale = null;
         }
@@ -451,8 +448,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new UnsupportedOperationException();
+        for(T i : liste) {
+            System.out.println(i);
+        }
+        int val = c.compare(liste.hent(1), liste.hent(2));
+        System.out.println(val);
+
+
+        // if val == 0, verdiene er like
+        // if val == -x, liste[i] > liste[i+1]
+        // if val == x, liste[i] < liste[i+1]
+
+        int last_compare = c.compare(liste.hent(0), liste.hent(1));
+        for (int i = 0; i < liste.antall()-1; i++) {
+            if (c.compare(liste.hent(i), liste.hent(i+1)) > 0) {
+
+
+            }
+        }
+
     }
+
+    private static void byttPlass(Node a, Node b) {
+
+    }
+
 
     private Node<T> finnNode(int indeks){
 
@@ -473,5 +493,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
 } // class DobbeltLenketListe
+
+
 
 

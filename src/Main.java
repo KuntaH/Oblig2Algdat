@@ -2,6 +2,7 @@ import algdat.DobbeltLenketListe;
 import algdat.Liste;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Main {
@@ -47,12 +48,8 @@ public class Main {
         System.out.println(test.indeksTil(3));
         System.out.println(test.inneholder(6));
 
-        for (int i : test) System.out.println(i);
         // Oppgave 5
         test.leggInn(0, 6);
-        System.out.println(test.indeksTil(6));
-        System.out.println(test.inneholder(6));
-
         DobbeltLenketListe<Integer> test2 = new DobbeltLenketListe<>();
         test2.leggInn(0, 4);
 
@@ -75,8 +72,12 @@ public class Main {
         Liste<String> listee = new DobbeltLenketListe<>(navn);
         listee.forEach(se -> System.out.print(se + " "));
         System.out.println();
-        for (String se : listee) System.out.print(se + ", ");
+        for (String se : listee) System.out.print(se + " ");
 
-
+        // Oppgave 10 - oskar sitt forsøk
+        System.out.println("\n----------OPPGAVE 10--------");
+        String[] names = {"Lars", "Anders", "Bodil", "Kari", "Per", "Berit"};
+        Liste<String> liste10 = new DobbeltLenketListe<>(names);
+        DobbeltLenketListe.sorter(liste10, Comparator.naturalOrder());
     }
 }
