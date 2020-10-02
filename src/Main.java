@@ -48,6 +48,7 @@ public class Main {
         System.out.println(test.indeksTil(3));
         System.out.println(test.inneholder(6));
 
+        for (int i : test) System.out.println(i);
         // Oppgave 5
         test.leggInn(0, 6);
         DobbeltLenketListe<Integer> test2 = new DobbeltLenketListe<>();
@@ -73,6 +74,16 @@ public class Main {
         listee.forEach(se -> System.out.print(se + " "));
         System.out.println();
         for (String se : listee) System.out.print(se + " ");
+
+        // oppgave 9
+        System.out.println();
+        DobbeltLenketListe<String> liste9 = new DobbeltLenketListe<>(new String[]{"Birger","Lars","Anders","Bodil","Kari","Per","Berit"});
+        liste9.fjernHvis(n -> n.charAt(0) == 'B');
+        System.out.println("oppg 9 test 1: "+ liste9 + " " + liste9.omvendtString());
+
+        liste9.fjernHvis(n -> n.toLowerCase().contains("e"));
+        System.out.println("oppg 9 test 2: "+ liste9 + " " + liste9.omvendtString());
+
 
         // Oppgave 10 - oskar sitt forsøk
         System.out.println("\n----------OPPGAVE 10--------");
