@@ -475,22 +475,36 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         for(T i : liste) {
             System.out.println(i);
         }
-        int val = c.compare(liste.hent(1), liste.hent(2));
-        System.out.println(val);
+        int val = c.compare(liste.hent(0), liste.hent(1));
+        System.out.println("sammenligning av "+ liste.hent(0)+ " og "+liste.hent(1)+" blir: "+val);
 
 
         // if val == 0, verdiene er like
         // if val == -x, liste[i] > liste[i+1]
         // if val == x, liste[i] < liste[i+1]
 
-        int last_compare = c.compare(liste.hent(0), liste.hent(1));
+        // veldig innefektiv metode, men den funker
+        // skal se mer paa den
+        // tror det blir noe som O(n^8) idk
+        // pekerne er ikke korekte, vet ikke om de må være det
         for (int i = 0; i < liste.antall()-1; i++) {
             if (c.compare(liste.hent(i), liste.hent(i+1)) > 0) {
-
-
+                T p = liste.oppdater(i,liste.hent(i+1));
+                liste.oppdater(i+1, p);
+            }
+            for (int j = liste.antall()-1; j>=1; j--) {
+                if (c.compare(liste.hent(j), liste.hent(j - 1)) < 0) {
+                    T p = liste.oppdater(j, liste.hent(j - 1));
+                    liste.oppdater(j - 1, p);
+                }
             }
         }
 
+
+        System.out.println("----Etter loop------");
+        for(T i : liste) {
+            System.out.println(i);
+        }
     }
 
     private static void byttPlass(Node a, Node b) {

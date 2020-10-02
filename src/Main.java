@@ -90,5 +90,11 @@ public class Main {
         String[] names = {"Lars", "Anders", "Bodil", "Kari", "Per", "Berit"};
         Liste<String> liste10 = new DobbeltLenketListe<>(names);
         DobbeltLenketListe.sorter(liste10, Comparator.naturalOrder());
+        Integer[] p = {7, 9, 3, 4, 2, 12, 43, 17};
+        Liste<Integer> n = new DobbeltLenketListe<>(p);
+        DobbeltLenketListe.sorter(n, Comparator.naturalOrder());
+        Character[] x = {'P', 'Q' , 'A', 'C', 'B', 'E', 'D'};
+        Liste<Character> q = new DobbeltLenketListe<>(x);
+        DobbeltLenketListe.sorter(q, Comparator.naturalOrder());
     }
 }
