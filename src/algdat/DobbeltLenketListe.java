@@ -472,45 +472,33 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        for(T i : liste) {
-            System.out.println(i);
-        }
-        int val = c.compare(liste.hent(0), liste.hent(1));
-        System.out.println("sammenligning av "+ liste.hent(0)+ " og "+liste.hent(1)+" blir: "+val);
-
 
         // if val == 0, verdiene er like
         // if val == -x, liste[i] > liste[i+1]
         // if val == x, liste[i] < liste[i+1]
 
         // veldig innefektiv metode, men den funker
-        // skal se mer paa den
-        // tror det blir noe som O(n^8) idk
-        // pekerne er ikke korekte, vet ikke om de må være det
         for (int i = 0; i < liste.antall()-1; i++) {
-            if (c.compare(liste.hent(i), liste.hent(i+1)) > 0) {
+            if (c.compare(liste.hent(i), liste.hent(i+1)) > 0) {            // dersom c.compare returnerer en int storre enn 0, bytt plass
                 T p = liste.oppdater(i,liste.hent(i+1));
                 liste.oppdater(i+1, p);
             }
             for (int j = liste.antall()-1; j>=1; j--) {
-                if (c.compare(liste.hent(j), liste.hent(j - 1)) < 0) {
+                if (c.compare(liste.hent(j), liste.hent(j - 1)) < 0) {      // dersom c.compare returnerer negativt tall, bytt plass
                     T p = liste.oppdater(j, liste.hent(j - 1));
                     liste.oppdater(j - 1, p);
                 }
             }
         }
 
-
-        System.out.println("----Etter loop------");
-        for(T i : liste) {
-            System.out.println(i);
-        }
     }
 
-    private static void byttPlass(Node a, Node b) {
-
+    private Node<T> getNode(int indeks) {
+        //throw new UnsupportedOperationException();
+        indeksKontroll(indeks,false); //Sjekker indeksen
+        Node<T> n = finnNode(indeks);
+        return n;
     }
-
 
     private Node<T> finnNode(int indeks){
 

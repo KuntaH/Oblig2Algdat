@@ -96,5 +96,9 @@ public class Main {
         Character[] x = {'P', 'Q' , 'A', 'C', 'B', 'E', 'D'};
         Liste<Character> q = new DobbeltLenketListe<>(x);
         DobbeltLenketListe.sorter(q, Comparator.naturalOrder());
+        q.forEach(i -> System.out.println(i));
+        n.forEach(i -> System.out.println(i));
+        liste10.forEach(i-> System.out.println(i));
+        System.out.println(Arrays.toString(names));
     }
 }
