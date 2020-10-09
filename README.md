@@ -37,3 +37,7 @@ Brukte også hjelpemetoden finnNode() for å fjerne verdi mellom to noder
 * Oppgave 8:
 * Oppgave 9: Ble løst ved å først sjekke hindrene som må passeres for å bruke metoden, og disse sjekkes opp gjennom if-statements. Etter det blir det sjekket opp hvor i listen slettingen skal foregå. Dersom antallet == 1, så vil hele listen slettes (hode og hale), slettes siste element så oppdateres halen (hale = hale.forrige), og likedan for hode (hode = hode.neste). Dersom elementet er inne i listen så oppdateres pekerne slik at Java sin garbage collection tar seg av slettingen. Antall minskes til slutt.
 * Oppgave 10:
+
+
+<h3>Obs</h3>
+* OBS 1 : Oppgave 6 - Dersom man kjører hele test klassen hender det at Oppgave 6zg feiler. Tok dette opp med studie assistentene og de mente at det skulle stå som det var, og at det kan variere fra maskin til maskin.
