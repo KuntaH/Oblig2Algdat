@@ -43,3 +43,7 @@ De modifiseres og hopper til neste i toString() og til forrige i omvendtString()
 * Oppgave 8:
 * Oppgave 9: det en del hindrer som først må passeres, og disse sjekkes opp gjennom if-statements. Etter det blir det sjekket opp hvor i listen slettingen skal foregå. Dersom antallet == 1, så vil hele listen slettes (hode og hale), slettes siste element så oppdateres halen (hale = hale.forrige), og likedan for hode (hode = hode.neste). Dersom elementet er inne i listen så oppdateres pekerne slik at Java sin garbage collection tar seg av slettingen. Antall minskes til slutt.
 * Oppgave 10:
+
+# Ekstra
+
+* De fleste warnings er fjernet."Method will throw an exception when parameter is null" er eneste warningen som er igjen. I oppgaveteksten blir det bedt om at null-pointer exception skal kastes dersom parameteren er null. 
