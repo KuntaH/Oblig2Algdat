@@ -26,7 +26,10 @@ Deretter loope igjennom for å finne første null element og lage en node
 Starter på hode i toString() og på hale i omvendtString()
 Looper igjennom med en while-løkke og hvis node ikke er null, modifiseres de. 
 De modifiseres og hopper til neste i toString() og til forrige i omvendtString()
-* Oppgave 3:
+* Oppgave 3:lagde finnNode() metode som leter fra hode eller hale avhengig av indeks og returnerer noden som stoppes på når indeksen er funnet.
+lagde hent() metode some bruker indekskontroll fra Liste interface. Bruker finnNode() til å opprette en node og returnere verdien av noden vi vil ha.
+lagde oppdater(). Noden vi skal oppdatere finner vi med finnNode() fra tidligere. Vi lagrer verdien av noden i en hjelpenode, erstatter verdien med den nye og                    returnerer hjelpenoden som er den gamle verdien.
+lagde subliste() metode som oppretter en kopi av listen fra en gitt start til en gitt slutt ved å bruke en while loop.
 * Oppgave 4: Jeg lagde en for loop som sjekker hvert element i listen om det er likt som inn-parameteren. 
 Dersom den finner den så returnerer den posisjonen til elementet. 
 Dersom den ikke finner, returneres -1. 
