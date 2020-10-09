@@ -39,6 +39,6 @@ Brukte også hjelpemetoden finnNode() for å fjerne verdi mellom to noder
 * Oppgave 10: Oppgave 10 ble løst ved hjelp av to for loops, en Comparator<? Super T> c parameter og oppdater() metoden. For loopen looper gjennom alle elementene og sammenlikner element i med element i+1 ved hjelp av Comparator. Dersom de står i "feil" rekkefølge så bytter de plass ved hjelp av oppdater() metoden. Dette gjøres 2 ganger for hvert element. Trodde først det skulle gå med kun en for loop, men da var det alltid ett element som sto feil sortert. Dette ble fikset da jeg la inn en baklengs for loop inne i den vanlige for loopen.
 
 
-<h3>Obs</h3>
+#Obs
 * OBS 1 : Oppgave 6 - Dersom man kjører hele test klassen hender det at Oppgave 6zg feiler. Tok dette opp med studie assistentene og de mente at det skulle stå som det var, og at det kan variere fra maskin til maskin.
 * OBS 2 : De fleste warnings er fjernet utenom "Method will throw an exception when parameter is null". Oppgavebeskrivelsen ber oss om å kaste nullpointer-exception dersom parameteren er null, så denne warningen for bli værende
