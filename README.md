@@ -39,5 +39,5 @@ Brukte også hjelpemetoden finnNode() for å fjerne verdi mellom to noder
 * Oppgave 10:
 
 
-<h3>Obs</h3>
+# Obs
 * OBS 1 : Oppgave 6 - Dersom man kjører hele test klassen hender det at Oppgave 6zg feiler. Tok dette opp med studie assistentene og de mente at det skulle stå som det var, og at det kan variere fra maskin til maskin.
