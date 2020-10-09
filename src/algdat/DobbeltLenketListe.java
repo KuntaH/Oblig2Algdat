@@ -7,11 +7,8 @@ package algdat;
 import java.util.Comparator;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
-import java.util.StringJoiner;
-
 import java.util.Iterator;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 
 
@@ -64,7 +61,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         for (T elementer : a){
             if (elementer != null){  // leter etter forste "ikke null" element og lager en node
 
-                hale = hale.neste = new Node(elementer, hale, null);
+                hale = hale.neste = new Node<>(elementer, hale, null);
                 antall++;
             }
         }
@@ -132,9 +129,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");
 
         if (tom()) {
-            hale = hode = new Node<T>(verdi, null, null);  // Tilfelle 1: tom liste
+            hale = hode = new Node<>(verdi, null, null);  // Tilfelle 1: tom liste
         } else {
-            hale = hale.neste = new Node<T>(verdi, hale, null);  // Tilfelle 2: ikke tom liste
+            hale = hale.neste = new Node<>(verdi, hale, null);  // Tilfelle 2: ikke tom liste
 
         }
 
@@ -154,12 +151,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new NullPointerException("Ikke lov med null-verdier i listen");
         }
         if(antall == 0) {
-            hale = hode = new Node<T>(verdi, null, null);
+            hale = hode = new Node<>(verdi, null, null);
             antall++;
             endringer++;
             return;
         }
-        Node<T> newNode = new Node<T>(verdi);
+        Node<T> newNode = new Node<>(verdi);
         Node<T> prev = finnNode(indeks-1);
         Node<T> next = finnNode(indeks);
         if(indeks == antall) {  // legge til paa slutten
@@ -204,7 +201,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return -1;
         }
         Node current = this.hode;
-        int index;
 
         for (int i = 0; i < this.antall; i++) {
             if(verdi.equals(current.verdi)) {
@@ -303,17 +299,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    /**
-     * replaces all values and pointers in the list to null,
-     * documents the changes, sets the head and tail to null,
-     * and then reduces the length to 0.
-     *
-     * 7.1 was chosen because of a very, very slightly shorter runtime.
-     *
-     * @author: Simen N. Renberg
-     * @version: 1.0
-     * @since 29/9/2020
-     */
     public void nullstill() {
         //7.1
 
@@ -394,7 +379,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return new DobbeltLenketListeIterator();
     }
 
-    public Iterator<T> iterator(int indeks) {
+    Iterator<T> iterator(int indeks) {
         indeksKontroll(indeks, false);
         return new DobbeltLenketListeIterator(indeks);
     }
@@ -493,16 +478,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     }
 
-    private Node<T> getNode(int indeks) {
-        //throw new UnsupportedOperationException();
-        indeksKontroll(indeks,false); //Sjekker indeksen
-        Node<T> n = finnNode(indeks);
-        return n;
-    }
-
     private Node<T> finnNode(int indeks){
 
-        Node<T> current;                    //Skal først initialisere en current node som.
+        Node<T> current;                    //Skal forst initialisere en current node som.
 
         if(indeks < antall /2){             //Jeg tar en test på om indeksen er høyere enn eller mindre enn halvparten av listen. Dette er for effektivitet av letingen
             current = hode;
